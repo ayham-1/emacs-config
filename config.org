@@ -1,6 +1,6 @@
 #+TITLE: EMACS Configuration.
-#+AUTHOR: Ayham Mamoun
-#+EMAIL: ayhamaboualfadl@gmail.com
+#+AUTHOR: ayham
+#+EMAIL: altffour@protonmail.com
 #+OPTIONS: toc:nil num:nil
 
 * Configure =use-package=
@@ -152,6 +152,16 @@ Install flycheck.
 
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck)
+#+END_SRC
+
+** =flyspell-correct=
+
+Install flyspell
+
+#+BEGIN_SRC emacs-lisp
+  (use-package flyspell-correct)
+  (add-hook 'text-mode-hook 'flyspell-mode)
+  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 #+END_SRC
 
 ** =magit=
