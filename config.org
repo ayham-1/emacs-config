@@ -214,6 +214,42 @@ Use =rainbow-delimiters=.
   (use-package rainbow-delimiters)
 #+END_SRC
 
+** Miscellanous Packages
+*** =elfeed= package
+
+Use & configure =elfeed=.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package elfeed)
+  (setf url-queue-timeout 30)
+  ;; mark all youtube entries
+  (add-hook 'elfeed-new-entry-hook
+		  (elfeed-make-tagger :feed-url "youtube\\.com"
+							  :add '(video youtube)))
+  ;; mark all odysee entries
+  (add-hook 'elfeed-new-entry-hook
+		  (elfeed-make-tagger :feed-url "odysee\\.com"
+							  :add '(video odysee)))
+  ;; entries older than 2 weeks are marked as read
+  (add-hook 'elfeed-new-entry-hook
+		  (elfeed-make-tagger :before "2 weeks ago"
+							  :remove 'unread))
+  ;; elfeed feed
+  (setq elfeed-feeds
+	  '(("https://lukesmith.xyz/rss.xml" blog)
+		("https://lukesmith.xyz/videos" video)
+		("https://notrelated.xyz/rss" podcast)
+		("https://youtube.com/feeds/videos.xml?channel_id=UCZ4AMrDcNrfy3X6nsU8-rPg" economics)
+		("https://youtube.com/feeds/videos.xml?channel_id=UCL_f53ZEJxp8TtlOkHwMV9Q" philosphy)
+		("https://youtube.com/feeds/videos.xml?channel_id=UClcE-kVhqyiHCcjYwcpfj9w" security)
+		("https://youtube.com/feeds/videos.xml?channel_id=UCDETFHKteb-C_EaXmRKvP4w" philosphy)
+		("https://protesilaos.com/books.xml" philosphy books)
+		("https://protesilaos.com/politics.xml" politics philosphy)
+		("https://protesilaos.com/codelog.xml" philosphy code)
+		("https://drewdevault.com/blog/index.xml" blog)
+	    ("https://unixsheikh.com/feed.rss" blog)))
+#+END_SRC
+
 * Programming Environments Configuration
 
 Use 4-spaced characters for tabs by default.
