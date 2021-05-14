@@ -234,6 +234,15 @@ Use & configure =elfeed=.
   (add-hook 'elfeed-new-entry-hook
 		  (elfeed-make-tagger :before "2 weeks ago"
 							  :remove 'unread))
+
+  ;; use mpv
+  (defun altf4/play-with-mpv (start end)
+	"Play the link in the region with mpv"
+	(interactive "r")
+	(shell-command (concat "mpv " (buffer-substring start end) "\&")))
+
+  (define-key elfeed-show-mode-map (kbd "C-c o") 'altf4/play-with-mpv)
+
   ;; elfeed feed
   (setq elfeed-feeds
 	  '(("https://lukesmith.xyz/rss.xml" blog)
@@ -243,11 +252,18 @@ Use & configure =elfeed=.
 		("https://youtube.com/feeds/videos.xml?channel_id=UCL_f53ZEJxp8TtlOkHwMV9Q" philosphy)
 		("https://youtube.com/feeds/videos.xml?channel_id=UClcE-kVhqyiHCcjYwcpfj9w" security)
 		("https://youtube.com/feeds/videos.xml?channel_id=UCDETFHKteb-C_EaXmRKvP4w" philosphy)
+		("https://youtube.com/feeds/videos.xml?channel_id=UCIveFvW-ARp_B_RckhweNJw" based politics)
+		("https://youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA" tech)
+		("https://youtube.com/feeds/videos.xml?channel_id=UCO01ytfzgXYy4glnPJm4PPQ" based politics)
+		("https://youtube.com/feeds/videos.xml?channel_id=UC-wBAxgUX9P0fXZ6-D0frRA" comedy based)
+		("https://youtube.com/feeds/videos.xml?channel_id=UCDETFHKteb-C_EaXmRKvP4w" philosphy)
+		("https://youtube.com/feeds/videos.xml?channel_id=UCr4kgAUTFkGIwlWSodg43QA" based politics)
+	    ("https://youtube.com/feeds/videos.xml?channel_id=UCoryWpk4QVYKFCJul9KBdyw" tech based)
 		("https://protesilaos.com/books.xml" philosphy books)
 		("https://protesilaos.com/politics.xml" politics philosphy)
 		("https://protesilaos.com/codelog.xml" philosphy code)
 		("https://drewdevault.com/blog/index.xml" blog)
-	    ("https://unixsheikh.com/feed.rss" blog)))
+		("https://unixsheikh.com/feed.rss" blog)))
 #+END_SRC
 
 * Programming Environments Configuration
