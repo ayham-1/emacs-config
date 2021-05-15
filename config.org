@@ -1,7 +1,6 @@
 #+TITLE: EMACS Configuration.
 #+AUTHOR: ayham
 #+EMAIL: altffour@protonmail.com
-#+OPTIONS: toc:nil num:nil
 
 * Configure =use-package=
 
@@ -239,7 +238,7 @@ Use & configure =elfeed=.
   (defun altf4/play-with-mpv (start end)
 	"Play the link in the region with mpv"
 	(interactive "r")
-	(shell-command (concat "mpv " (buffer-substring start end) "\&")))
+	(shell-command (concat "mpv " (buffer-substring start end) --ytdl-format=bestvideo[height<=?720][fps<=?30]+bestaudio/best"\&")))
 
   (define-key elfeed-show-mode-map (kbd "C-c o") 'altf4/play-with-mpv)
 
@@ -264,6 +263,16 @@ Use & configure =elfeed=.
 		("https://protesilaos.com/codelog.xml" philosphy code)
 		("https://drewdevault.com/blog/index.xml" blog)
 		("https://unixsheikh.com/feed.rss" blog)))
+#+END_SRC
+
+*** =erc= package
+
+Configure =erc=.
+
+#+BEGIN_SRC emacs-lisp
+(setq
+ erc-nick "sisyphus"
+ erc-user-full-name "ello")
 #+END_SRC
 
 * Programming Environments Configuration
